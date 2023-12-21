@@ -1,9 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { user, logOut } = useContext(AuthContext)
   return (
     <div className="bg-[#4daeef]">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
@@ -39,7 +41,7 @@ const Navbar = () => {
                     <NavLink to="/donation-campaign">Home</NavLink>
                   </li>
                 </ul>
-                {/* <div>
+                <div>
                   {user ? (
                     <div className="dropdown dropdown-end">
                       <label
@@ -61,12 +63,9 @@ const Navbar = () => {
                           <a className="justify-between">{user.displayName}</a>
                         </li>
                         <li>
-                          <Link to="/dashboard/add-pet"><p>Dashboard</p></Link>
-                        </li>
-                        <li>
                           <button
-                            onClick={handleLogOut}
-                            className="bg-[#f6425f] text-white px-5 py-2 rounded-md ml-3 hover:border hover:border-[#f6425f] "
+                            onClick={logOut}
+                            className="bg-[#4daeef] text-white px-5 py-2 rounded-md ml-3 hover:border hover:border-[#4daeef] "
                             type="button"
                             data-ripple-light="true"
                           >
@@ -77,27 +76,18 @@ const Navbar = () => {
                     </div>
                   ) : (
                     <div className="mb-5 md:mb-0">
-                      <Link to="/signIn">
+                      <Link to="/login">
                         <button
-                          className="border text-black border-[#f6425f] px-5 py-2 rounded-md hover:bg-[#f6425f] hover:text-white"
+                          className="border text-white border-[#bed1de] px-5 py-2 rounded-md"
                           type="button"
                           data-ripple-light="true"
                         >
                           Sign In
                         </button>
                       </Link>
-                      <Link to="/signUp">
-                        <button
-                          className="bg-[#f6425f] text-white px-5 py-2 rounded-md ml-3 hover:border hover:border-[#f6425f] "
-                          type="button"
-                          data-ripple-light="true"
-                        >
-                          Sign Up
-                        </button>
-                      </Link>
                     </div>
                   )}
-                </div> */}
+                </div>
               </div>
             </nav>
           </div>
