@@ -5,10 +5,10 @@ import { useState } from "react";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
-    <div>
+    <div className="bg-[#4daeef]">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
         <div className="flex items-center font-bold text-lg">
-          <h1>Task Manager</h1>
+          <h1 className="text-white">Task Manager</h1>
         </div>
         <div className="">
           <div
@@ -28,15 +28,15 @@ const Navbar = () => {
               } ${open ? "block" : "hidden"}`}
             >
               <div className="flex flex-col md:flex-row gap-5 py-3 items-center">
-                <ul className={`flex flex-col md:flex-row gap-5 text-black`}>
+                <ul className={`flex flex-col md:flex-row gap-5 text-white`}>
                   <li>
                     <NavLink to="/">Home</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/petListing">Pet Listing</NavLink>
+                    <NavLink to="/">Home</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/donation-campaign">Donation Campaign</NavLink>
+                    <NavLink to="/donation-campaign">Home</NavLink>
                   </li>
                 </ul>
                 {/* <div>
