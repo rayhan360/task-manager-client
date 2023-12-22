@@ -13,14 +13,14 @@ const UpdateTask = ({ task, refetch }) => {
       title: task.title || "",
       description: task.description || "",
       priority: task.priority || "low",
-      deadlines: task.deadlines || "",
+      deadlines: task?.deadlines,
     });
   }, [task, reset]);
 
   const onSubmit = (data) => {
     // Handle form submission here
     console.log(data);
-    axios.patch(`http://localhost:3000/task/allTask/${task._id}`, data).then((res) => {
+    axios.patch(`https://task-manager-server-eight-flame.vercel.app/task/allTask/${task._id}`, data).then((res) => {
       console.log(res.data);
       if(res.data.modifiedCount > 0){
         toast.success('task updated')

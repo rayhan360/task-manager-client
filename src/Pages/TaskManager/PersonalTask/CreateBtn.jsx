@@ -25,7 +25,7 @@ const CreateBtn = ({refetch, refetch:refe}) => {
     };
 
     axios
-      .post("http://localhost:3000/task", taskItems)
+      .post("https://task-manager-server-eight-flame.vercel.app/task", taskItems)
       .then((res) => {
         if (res.data.insertedId) {
           toast.success("task added successfully");

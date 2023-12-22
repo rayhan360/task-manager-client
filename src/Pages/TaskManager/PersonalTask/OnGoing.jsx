@@ -14,7 +14,7 @@ const OnGoing = ({ todo,  handleComplete, handleDeleteTask, refetch}) => {
           <div key={to._id} className="mb-4">
             {/* todo list */}
             {to?.status === "ongoing" && (
-              <div className="flex justify-between border-b pb-2 text-sm">
+              <div className="md:flex justify-between border-b pb-2 text-sm">
                 <div className="flex items-center gap-5">
                   <input
                     type="radio"
@@ -35,10 +35,6 @@ const OnGoing = ({ todo,  handleComplete, handleDeleteTask, refetch}) => {
                   <button onClick={() => handleDeleteTask(to._id)} className="text-red-500 hover:text-red-700">
                     <FaTrashAlt />
                   </button>
-
-                  {/* <button className="text-blue-500 hover:text-blue-700">
-                    <FaEdit />
-                  </button> */}
                   <UpdateTask task={to} refetch={refetch}></UpdateTask>
                 </div>
               </div>

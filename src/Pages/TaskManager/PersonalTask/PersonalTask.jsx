@@ -18,7 +18,7 @@ const PersonalTask = () => {
     queryKey: ["tasks", user?.email],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:3000/task/user?email=${user?.email}`
+        `https://task-manager-server-eight-flame.vercel.app/task/user?email=${user?.email}`
       );
       return res.data;
     },
@@ -27,7 +27,7 @@ const PersonalTask = () => {
 
   const handleOnGoing = async (id) => {
     try {
-      const res = await axios.patch(`http://localhost:3000/task/${id}`);
+      const res = await axios.patch(`https://task-manager-server-eight-flame.vercel.app/task/${id}`);
       if (res.data.modifiedCount) {
         toast.success("Your Task On Going Now");
         refetch();
@@ -39,7 +39,7 @@ const PersonalTask = () => {
 
   const handleComplete = async (id) => {
     try{
-      const res = await axios.patch(`http://localhost:3000/task/complete/${id}`);
+      const res = await axios.patch(`https://task-manager-server-eight-flame.vercel.app/task/complete/${id}`);
       if(res.data.modifiedCount) {
         toast.success("Task Complete")
         refetch()
@@ -50,7 +50,7 @@ const PersonalTask = () => {
   };
 
   const handleDeleteTask = id => {
-    axios.delete(`http://localhost:3000/task/${id}`).then(res => {
+    axios.delete(`https://task-manager-server-eight-flame.vercel.app/task/${id}`).then(res => {
       console.log(res.data)
       if(res.data.deletedCount > 0){
         toast.error('task deleted');
@@ -72,7 +72,7 @@ const PersonalTask = () => {
               <div key={todo._id} className="mb-4">
                 {/* todo list */}
                 {todo?.status === "to-do" && (
-                  <div className="flex justify-between border-b pb-2 text-sm">
+                  <div className="md:flex justify-between border-b pb-2 text-sm">
                     <div className="flex items-center gap-5">
                       <input
                       onClick={() => handleComplete(todo._id)}
