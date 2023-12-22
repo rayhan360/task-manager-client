@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import logo from '../assets/logo.png';
 import "./Navbar.css"
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -10,6 +11,7 @@ const Navbar = () => {
     <div className="bg-[#4daeef]">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
         <div className="flex items-center font-bold text-lg">
+          <img className="size-14" src={logo} alt="" />
           <h1 className="text-white">Task Manager</h1>
         </div>
         <div className="">
