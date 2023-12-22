@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
-const OnGoing = ({ todo,  handleComplete}) => {
+const OnGoing = ({ todo,  handleComplete, handleDeleteTask}) => {
   return (
     <div className="my-10">
       <div className="mb-4">
@@ -13,7 +13,7 @@ const OnGoing = ({ todo,  handleComplete}) => {
           <div key={to._id} className="mb-4">
             {/* todo list */}
             {to?.status === "ongoing" && (
-              <div className="flex justify-between border-b pb-2">
+              <div className="flex justify-between border-b pb-2 text-sm">
                 <div className="flex items-center gap-5">
                   <input
                     type="radio"
@@ -22,7 +22,7 @@ const OnGoing = ({ todo,  handleComplete}) => {
                     onClick={() => handleComplete(to._id)}
                   />
                   <div>
-                    <h1 className="text-xl font-semibold">{to.title}</h1>
+                    <h1 className="text-lg font-semibold">{to.title}</h1>
                     <div className="flex gap-5">
                       <p className="text-gray-600">{to.description}</p>
                       <p className="text-gray-600">Deadline: {to.deadline}</p>
@@ -31,7 +31,7 @@ const OnGoing = ({ todo,  handleComplete}) => {
                   </div>
                 </div>
                 <div className="mt-2 flex items-center space-x-4">
-                  <button className="text-red-500 hover:text-red-700">
+                  <button onClick={() => handleDeleteTask(to._id)} className="text-red-500 hover:text-red-700">
                     <FaTrashAlt />
                   </button>
 

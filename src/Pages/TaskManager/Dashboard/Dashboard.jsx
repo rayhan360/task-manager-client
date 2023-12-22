@@ -46,8 +46,13 @@ const Dashboard = () => {
                 Important Tasks
               </Link>
             </li>
+            <div className="divider"></div> 
+            <li>
+              <Link to="/">
+              Home</Link>
+            </li>
           </ul>
-
+      
         {/* <button className="mt-8 bg-[#4daeef] text-white py-2 px-4 rounded-md text-center">
           Logout
         </button> */}

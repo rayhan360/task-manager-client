@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import CreateBtn from "./createBtn";
 import OnGoing from "./OnGoing";
 import toast, { Toaster } from "react-hot-toast";
+import Complete from "./Complete";
 
 const PersonalTask = () => {
   const { user } = useContext(AuthContext);
@@ -44,6 +45,16 @@ const PersonalTask = () => {
     }catch (error) {
       console.log(error);
     }
+  };
+
+  const handleDeleteTask = id => {
+    axios.delete(`http://localhost:3000/task/${id}`).then(res => {
+      console.log(res.data)
+      if(res.data.deletedCount > 0){
+        toast.error('task deleted');
+        refetch();
+      }
+    })
   }
 
 
@@ -61,7 +72,7 @@ const PersonalTask = () => {
               <div key={todo._id} className="mb-4">
                 {/* todo list */}
                 {todo?.status === "to-do" && (
-                  <div className="flex justify-between border-b pb-2">
+                  <div className="flex justify-between border-b pb-2 text-sm">
                     <div className="flex items-center gap-5">
                       <input
                       onClick={() => handleComplete(todo._id)}
@@ -70,7 +81,7 @@ const PersonalTask = () => {
                         className="radio radio-info"
                       />
                       <div>
-                        <h1 className="text-xl font-semibold">{todo.title}</h1>
+                        <h1 className="text-lg font-semibold">{todo.title}</h1>
                         <div className="flex gap-5">
                           <p className="text-gray-600">{todo.description}</p>
                           <p className="text-gray-600">
@@ -83,7 +94,7 @@ const PersonalTask = () => {
                       </div>
                     </div>
                     <div className="mt-2 flex items-center space-x-4">
-                      <button className="text-red-500 hover:text-red-700">
+                      <button onClick={() => handleDeleteTask(todo._id)} className="text-red-500 hover:text-red-700">
                         <FaTrashAlt />
                       </button>
 
@@ -102,7 +113,8 @@ const PersonalTask = () => {
                 )}
               </div>
             ))}
-            <OnGoing todo={task} handleComplete={handleComplete}></OnGoing>
+            <OnGoing todo={task} handleComplete={handleComplete} handleDeleteTask={handleDeleteTask}></OnGoing>
+            <Complete todo={task}></Complete>
             <CreateBtn refetch={refetch}></CreateBtn>
           </div>
         </div>
