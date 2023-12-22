@@ -10,7 +10,7 @@ const Banner = () => {
           <p className="text-base text-gray-500">Make Your Works easy with</p>
           <h1 className="text-5xl font-bold text-[#4daeef] my-3">Task Management</h1>
           <p className="text-base text-gray-500">Save Your Time</p>
-          <Link to="/login"><button className="mt-4 px-4 py-2 bg-[#4daeef] text-white rounded-md">
+          <Link to="/dashboard"><button className="mt-4 px-4 py-2 bg-[#4daeef] text-white rounded-md">
             Let&apos;s Explore
           </button></Link>
         </div>

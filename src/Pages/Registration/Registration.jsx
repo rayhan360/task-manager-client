@@ -31,7 +31,7 @@ const Registration = () => {
           photoURL: photo,
         });
         navigate(location?.state ? location.state : "/");
-        window.location.reload();
+        // window.location.reload();
       })
       .catch((error) => {
         console.log(error.message);
