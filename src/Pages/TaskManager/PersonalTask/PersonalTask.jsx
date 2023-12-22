@@ -113,7 +113,7 @@ const PersonalTask = () => {
                 )}
               </div>
             ))}
-            <OnGoing todo={task} handleComplete={handleComplete} handleDeleteTask={handleDeleteTask}></OnGoing>
+            <OnGoing todo={task} handleComplete={handleComplete} handleDeleteTask={handleDeleteTask} refetch={refetch}></OnGoing>
             <Complete todo={task}></Complete>
             <CreateBtn refetch={refetch}></CreateBtn>
           </div>

@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
+import UpdateTask from "./UpdateTask";
 
-const OnGoing = ({ todo,  handleComplete, handleDeleteTask}) => {
+const OnGoing = ({ todo,  handleComplete, handleDeleteTask, refetch}) => {
   return (
     <div className="my-10">
       <div className="mb-4">
@@ -35,9 +36,10 @@ const OnGoing = ({ todo,  handleComplete, handleDeleteTask}) => {
                     <FaTrashAlt />
                   </button>
 
-                  <button className="text-blue-500 hover:text-blue-700">
+                  {/* <button className="text-blue-500 hover:text-blue-700">
                     <FaEdit />
-                  </button>
+                  </button> */}
+                  <UpdateTask task={to} refetch={refetch}></UpdateTask>
                 </div>
               </div>
             )}

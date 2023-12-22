@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import { useLocation, useNavigation } from "react-router-dom";
+import { useLocation, useNavigate} from "react-router-dom";
 import toast from "react-hot-toast";
 const SocialAuth = () => {
     const { googleLogin } = useContext(AuthContext)
-    const navigate = useNavigation()
+    const navigate = useNavigate()
     const location = useLocation()
 
     const socialMediaSingIn = media => {

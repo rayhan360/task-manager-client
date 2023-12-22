@@ -44,7 +44,7 @@ const CreateBtn = ({refetch, refetch:refe}) => {
         <div>
             <button
             onClick={() => document.getElementById("my_modal_3").showModal()}
-            className="bg-[#4daeef] text-white px-4 py-2 rounded-md absolute bottom-36 flex items-center gap-2"
+            className="bg-[#4daeef] text-white px-4 py-2 rounded-md flex items-center gap-2"
           >
             <FaPlus className="" />
             Create a New Task
