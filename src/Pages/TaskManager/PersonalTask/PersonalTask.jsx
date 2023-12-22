@@ -5,6 +5,8 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import CreateBtn from "./createBtn";
+import Swal from "sweetalert2";
+import OnGoing from "./OnGoing";
 
 const PersonalTask = () => {
   const { user } = useContext(AuthContext);
@@ -20,29 +22,49 @@ const PersonalTask = () => {
   });
   console.log(task);
 
+  const handleOnGoing = async (id) => {
+    try {
+      const res = await axios.patch(`http://localhost:3000/task/${id}`);
+      if (res.data.modifiedCount) {
+        Swal.fire("");
+        refetch();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       {task.length > 0 ? (
         <div>
-          <div className="mb-4">
-            <h1 className="text-2xl font-bold">To-Do</h1>
-            <hr />
-          </div>
           <div>
+            <div className="mb-4">
+              <h1 className="text-2xl font-bold mb-2">To-Do</h1>
+              <hr />
+            </div>
             {task?.map((todo) => (
-              <div key={todo._id} className="mb-4 border-b pb-2">
+              <div key={todo._id} className="mb-4">
+                {/* todo list */}
                 {todo?.status === "to-do" && (
-                  <div className="flex justify-between">
-                    <div>
-                      <h1 className="text-xl font-semibold">{todo.title}</h1>
-                      <div className="flex gap-5">
-                        <p className="text-gray-600">{todo.description}</p>
-                        <p className="text-gray-600">
-                          Deadline: {todo.deadline}
-                        </p>
-                        <p className="text-gray-600">
-                          Priority: {todo.priority}
-                        </p>
+                  <div className="flex justify-between border-b pb-2">
+                    <div className="flex items-center gap-5">
+                      <input
+                        type="radio"
+                        name="radio-7"
+                        className="radio radio-info"
+                      />
+                      <div>
+                        <h1 className="text-xl font-semibold">{todo.title}</h1>
+                        <div className="flex gap-5">
+                          <p className="text-gray-600">{todo.description}</p>
+                          <p className="text-gray-600">
+                            Deadline: {todo.deadline}
+                          </p>
+                          <p className="text-gray-600">
+                            Priority: {todo.priority}
+                          </p>
+                        </div>
                       </div>
                     </div>
                     <div className="mt-2 flex items-center space-x-4">
@@ -54,15 +76,19 @@ const PersonalTask = () => {
                         <FaEdit />
                       </button>
 
-                      <button className="bg-blue-500 text-white px-2 py-1 rounded-md">
+                      <button
+                        onClick={() => handleOnGoing(todo._id)}
+                        className="bg-blue-500 text-white px-2 py-1 rounded-md"
+                      >
                         OnGoing
                       </button>
                     </div>
                   </div>
                 )}
-                <CreateBtn refetch={refetch}></CreateBtn>
               </div>
             ))}
+            <OnGoing todo={task}></OnGoing>
+            <CreateBtn refetch={refetch}></CreateBtn>
           </div>
         </div>
       ) : (
