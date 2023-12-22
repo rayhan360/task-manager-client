@@ -45,8 +45,9 @@ const Footer = () => {
             </div>
             <div className="flex space-x-4">
               <Link to="/">Home</Link>
-              <Link to="">Listing</Link>
-              <Link to="">Campaign</Link>
+              <Link to="/aboutUs">About</Link>
+              <Link to="/community">Community</Link>
+              <Link to="/knowledge">KnowledgeBase</Link>
             </div>
           </div>
         </div>

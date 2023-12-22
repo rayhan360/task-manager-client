@@ -119,7 +119,7 @@ const PersonalTask = () => {
       ) : (
         <div className="flex flex-col items-center">
           <img className="w-[60%]" src={noTask} alt="" />
-          <div className="mr-36">
+          <div className="">
             <CreateBtn refetch={refetch}></CreateBtn>
           </div>
         </div>
