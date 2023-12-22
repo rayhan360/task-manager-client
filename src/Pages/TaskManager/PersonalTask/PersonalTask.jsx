@@ -5,8 +5,8 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import CreateBtn from "./createBtn";
-import Swal from "sweetalert2";
 import OnGoing from "./OnGoing";
+import toast, { Toaster } from "react-hot-toast";
 
 const PersonalTask = () => {
   const { user } = useContext(AuthContext);
@@ -26,13 +26,27 @@ const PersonalTask = () => {
     try {
       const res = await axios.patch(`http://localhost:3000/task/${id}`);
       if (res.data.modifiedCount) {
-        Swal.fire("");
+        toast.success("Your Task On Going Now");
         refetch();
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+  const handleComplete = async (id) => {
+    try{
+      const res = await axios.patch(`http://localhost:3000/task/complete/${id}`);
+      if(res.data.modifiedCount) {
+        toast.success("Task Complete")
+        refetch()
+      }
+    }catch (error) {
+      console.log(error);
+    }
+  }
+
+
 
   return (
     <div>
@@ -50,6 +64,7 @@ const PersonalTask = () => {
                   <div className="flex justify-between border-b pb-2">
                     <div className="flex items-center gap-5">
                       <input
+                      onClick={() => handleComplete(todo._id)}
                         type="radio"
                         name="radio-7"
                         className="radio radio-info"
@@ -87,7 +102,7 @@ const PersonalTask = () => {
                 )}
               </div>
             ))}
-            <OnGoing todo={task}></OnGoing>
+            <OnGoing todo={task} handleComplete={handleComplete}></OnGoing>
             <CreateBtn refetch={refetch}></CreateBtn>
           </div>
         </div>
@@ -99,6 +114,7 @@ const PersonalTask = () => {
           </div>
         </div>
       )}
+      <Toaster></Toaster>
     </div>
   );
 };

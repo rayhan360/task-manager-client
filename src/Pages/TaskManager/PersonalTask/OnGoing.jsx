@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
-const OnGoing = ({ todo }) => {
+const OnGoing = ({ todo,  handleComplete}) => {
   return (
     <div className="my-10">
       <div className="mb-4">
@@ -19,6 +19,7 @@ const OnGoing = ({ todo }) => {
                     type="radio"
                     name="radio-7"
                     className="radio radio-info"
+                    onClick={() => handleComplete(to._id)}
                   />
                   <div>
                     <h1 className="text-xl font-semibold">{to.title}</h1>
