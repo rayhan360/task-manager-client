@@ -3,14 +3,14 @@ import task from "../../assets/task.jpg";
 
 const Banner = () => {
   return (
-    <div className="flex items-center p-8">
+    <div className="flex flex-col lg:flex-row items-center p-8">
 
       <div className="flex-1" style={{ flexBasis: "40%" }}>
         <div className="mx-20">
           <p className="text-base text-gray-500">Make Your Works easy with</p>
           <h1 className="text-5xl font-bold text-[#4daeef] my-3">Task Management</h1>
           <p className="text-base text-gray-500">Save Your Time</p>
-          <Link to="/dashboard"><button className="mt-4 px-4 py-2 bg-[#4daeef] text-white rounded-md">
+          <Link to="/dashboard/personal"><button className="mt-4 px-4 py-2 bg-[#4daeef] text-white rounded-md">
             Let&apos;s Explore
           </button></Link>
         </div>

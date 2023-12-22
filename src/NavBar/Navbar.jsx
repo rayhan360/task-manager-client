@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-
+import "./Navbar.css"
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext)
@@ -25,7 +25,7 @@ const Navbar = () => {
           </div>
           <div>
             <nav
-              className={`absolute bg-[#e7c7b1] z-50 lg:bg-transparent lg:block lg:static px-5 ${
+              className={`absolute bg-[#4daeef] z-50 lg:bg-transparent lg:block lg:static px-5 ${
                 open ? "right-1" : "-right-72"
               } ${open ? "block" : "hidden"}`}
             >
@@ -35,10 +35,13 @@ const Navbar = () => {
                     <NavLink to="/">Home</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/">Home</NavLink>
+                    <NavLink to="/aboutUs">About</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/donation-campaign">Home</NavLink>
+                    <NavLink to="/community">Community</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/knowledge">KnowledgeBase</NavLink>
                   </li>
                 </ul>
                 <div>
