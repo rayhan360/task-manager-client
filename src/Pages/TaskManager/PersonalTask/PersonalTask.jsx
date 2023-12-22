@@ -1,4 +1,4 @@
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import noTask from "../../../assets/no-task.png";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
@@ -8,6 +8,8 @@ import CreateBtn from "./createBtn";
 import OnGoing from "./OnGoing";
 import toast, { Toaster } from "react-hot-toast";
 import Complete from "./Complete";
+import UpdateTodo from "./UpdateTodo";
+
 
 const PersonalTask = () => {
   const { user } = useContext(AuthContext);
@@ -57,8 +59,6 @@ const PersonalTask = () => {
     })
   }
 
-
-
   return (
     <div>
       {task.length > 0 ? (
@@ -98,9 +98,7 @@ const PersonalTask = () => {
                         <FaTrashAlt />
                       </button>
 
-                      <button className="text-blue-500 hover:text-blue-700">
-                        <FaEdit />
-                      </button>
+                      <UpdateTodo task={todo} refetch={refetch}></UpdateTodo>
 
                       <button
                         onClick={() => handleOnGoing(todo._id)}
